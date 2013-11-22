@@ -1,0 +1,4 @@
+CodingDojoCodeKatas
+===================
+
+Coding Kata practice
