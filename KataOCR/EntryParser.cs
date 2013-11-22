@@ -43,5 +43,16 @@ namespace KataOCR
             return entries;
         }
 
+        public int[] ParseAccountNumber(string entry)
+        {
+            int[] accountNumber = new int[9];
+
+            for (int i = 0; i < accountNumber.Length; i++)
+            {
+                accountNumber[i] = Convert.ToInt32(entry[i]);
+            }
+
+            return accountNumber;
+        }
     }
 }

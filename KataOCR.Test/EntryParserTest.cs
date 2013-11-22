@@ -16,28 +16,6 @@ namespace KataOCR.Test
         private EntryParser CUT;
         private string filePath;
 
-        public EntryParserTest()
-        {
-           
-        }
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
 
         [TestInitialize]
         public void Initialize()
@@ -64,7 +42,6 @@ namespace KataOCR.Test
         [TestMethod]
         public void GatherEntriesIntoListTest()
         {
-            string fileRawContents = CUT.OpenAndReadFile(filePath);
             List<string> whatIsActuallyInTheFile = CUT.GatherEntriesIntoList(filePath);
             List<string> whatShouldBeInTheFile = new List<string>();
             whatShouldBeInTheFile.Add("    _  _     _  _  _  _  _ \r\n" +
@@ -81,9 +58,13 @@ namespace KataOCR.Test
         }
 
         [TestMethod]
-        public void ConvertEntryListIntoAccountArrays(List<string> entries)
+        public void ParseAccountNumberTest()
         {
+            List<string> entries = CUT.GatherEntriesIntoList(filePath);
+            int[] whatIsTheResult = CUT.ParseAccountNumber(entries[0]);
+            int[] whatShouldBeTheResult = {1,2,3,4,5,6,7,8,9};
 
+            Assert.AreEqual(whatShouldBeTheResult, whatIsTheResult);
         }
     }
 
