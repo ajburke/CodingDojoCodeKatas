@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KataOCR", "KataOCR\KataOCR.csproj", "{E5F90F30-5A66-4620-B87E-80C0ED02311A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KataOCR.Test", "KataOCR.Test\KataOCR.Test.csproj", "{A2A20F3A-261E-465B-B306-837ADDD94FEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{93AB83BC-E647-4D8D-B43A-68EA3CB7C7A5}"
+	ProjectSection(SolutionItems) = preProject
+		KataOCR.vsmdi = KataOCR.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = KataOCR.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5F90F30-5A66-4620-B87E-80C0ED02311A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F90F30-5A66-4620-B87E-80C0ED02311A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F90F30-5A66-4620-B87E-80C0ED02311A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F90F30-5A66-4620-B87E-80C0ED02311A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2A20F3A-261E-465B-B306-837ADDD94FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A20F3A-261E-465B-B306-837ADDD94FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A20F3A-261E-465B-B306-837ADDD94FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A20F3A-261E-465B-B306-837ADDD94FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
