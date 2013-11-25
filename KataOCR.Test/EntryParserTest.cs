@@ -25,9 +25,9 @@ namespace KataOCR.Test
         }
 
         [TestMethod]
-        public void OpenFileTest()
+        public void OpenAndReadAndCloseFileTest()
         {
-            string fileContents = CUT.OpenAndReadFile(filePath);
+            string fileContents = CUT.OpenAndReadAndCloseFile(filePath);
             string whatShouldBeInTheFile = "    _  _     _  _  _  _  _ \r\n" +
                                            "  | _| _||_||_ |_   ||_||_|\r\n" +
                                            "  ||_  _|  | _||_|  ||_| _|\r\n" +
@@ -40,32 +40,41 @@ namespace KataOCR.Test
         }
 
         [TestMethod]
-        public void GatherEntriesIntoListTest()
+        public void GatherLinesIntoListTest()
         {
-            List<string> whatIsActuallyInTheFile = CUT.GatherEntriesIntoList(filePath);
+            List<string> whatIsActuallyInTheFile = CUT.GatherLinesIntoList(filePath);
             List<string> whatShouldBeInTheFile = new List<string>();
-            whatShouldBeInTheFile.Add("    _  _     _  _  _  _  _ \r\n" +
-                                      "  | _| _||_||_ |_   ||_||_|\r\n" +
-                                      "  ||_  _|  | _||_|  ||_| _|\r\n" +
-                                      "                           \r\n");
-            whatShouldBeInTheFile.Add(" _  _  _  _  _  _  _  _  _ \r\n" +
-                                      "| || || || || || || || || |\r\n" +
-                                      "|_||_||_||_||_||_||_||_||_|\r\n" +
-                                      "                           \r\n");
+            whatShouldBeInTheFile.Add("    _  _     _  _  _  _  _ \r\n");
+            whatShouldBeInTheFile.Add("  | _| _||_||_ |_   ||_||_|\r\n");
+            whatShouldBeInTheFile.Add("  ||_  _|  | _||_|  ||_| _|\r\n");
+            whatShouldBeInTheFile.Add("                           \r\n");
+            whatShouldBeInTheFile.Add(" _  _  _  _  _  _  _  _  _ \r\n");
+            whatShouldBeInTheFile.Add("| || || || || || || || || |\r\n");
+            whatShouldBeInTheFile.Add("|_||_||_||_||_||_||_||_||_|\r\n");
+            whatShouldBeInTheFile.Add("                           \r\n");
 
             Assert.AreEqual(whatShouldBeInTheFile[0], whatIsActuallyInTheFile[0]);
             Assert.AreEqual(whatShouldBeInTheFile[1], whatIsActuallyInTheFile[1]);
+            Assert.AreEqual(whatShouldBeInTheFile[2], whatIsActuallyInTheFile[2]);
+            Assert.AreEqual(whatShouldBeInTheFile[3], whatIsActuallyInTheFile[3]);
+            Assert.AreEqual(whatShouldBeInTheFile[4], whatIsActuallyInTheFile[4]);
+            Assert.AreEqual(whatShouldBeInTheFile[5], whatIsActuallyInTheFile[5]);
+            Assert.AreEqual(whatShouldBeInTheFile[6], whatIsActuallyInTheFile[6]);
+            Assert.AreEqual(whatShouldBeInTheFile[7], whatIsActuallyInTheFile[7]);
         }
-
+        /*
         [TestMethod]
-        public void ParseAccountNumberTest()
+        public void SplitLinesIntoAccountNumbersListTest()
         {
-            List<string> entries = CUT.GatherEntriesIntoList(filePath);
-            int[] whatIsTheResult = CUT.ParseAccountNumber(entries[0]);
-            int[] whatShouldBeTheResult = {1,2,3,4,5,6,7,8,9};
+            List<string> lines = CUT.GatherLinesIntoList(filePath);
+            List<AccountNumber> actualResults = CUT.SplitLinesIntoAccountNumbersList(lines);
 
-            Assert.AreEqual(whatShouldBeTheResult, whatIsTheResult);
+            List<AccountNumber> expectedResults = new List<AccountNumber>();
+
+            //expectedResults.Add();
+
         }
+        */
     }
-
+    
 }

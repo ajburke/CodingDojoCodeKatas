@@ -16,7 +16,7 @@ namespace KataOCR
           
         }
 
-        public string OpenAndReadFile(string fileName)
+        public string OpenAndReadAndCloseFile(string fileName)
         {
             StreamReader file = new StreamReader(fileName);
             string fileContents = file.ReadToEnd();
@@ -27,32 +27,24 @@ namespace KataOCR
         }
 
 
-        public List<string> GatherEntriesIntoList(string fileName)
+        public List<string> GatherLinesIntoList(string fileName)
         {
-            string fileRawContents = this.OpenAndReadFile(fileName);
-            List<string> entries = new List<string>();
+            string fileRawContents = this.OpenAndReadAndCloseFile(fileName);
+            List<string> lines = new List<string>();
 
-            //string fileContentsWithNoReturns = fileRawContents.Replace("\r\n", "");
-
-            for (int i = 0; i < fileRawContents.Length; i += 116)
+            for (int i = 0; i < fileRawContents.Length; i += 29)
             {
-                string substring = fileRawContents.Substring(i, 116);
-             entries.Add(substring);
+                string substring = fileRawContents.Substring(i, 29);
+                lines.Add(substring);
             }
 
-            return entries;
+            return lines;
         }
-
-        public int[] ParseAccountNumber(string entry)
+        /*
+        public List<AccountNumber> SplitLinesIntoAccountNumbersList(List<string> lines)
         {
-            int[] accountNumber = new int[9];
-
-            for (int i = 0; i < accountNumber.Length; i++)
-            {
-                accountNumber[i] = Convert.ToInt32(entry[i]);
-            }
-
-            return accountNumber;
+            
         }
+       */
     }
 }

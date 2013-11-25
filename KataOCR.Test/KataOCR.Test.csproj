@@ -39,9 +39,10 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountNumberTests.cs" />
+    <Compile Include="EntryNumberTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntryParserTest.cs" />
-    <Compile Include="EntryObjectTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
