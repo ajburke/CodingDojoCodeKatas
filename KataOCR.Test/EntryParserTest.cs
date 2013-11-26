@@ -20,8 +20,9 @@ namespace KataOCR.Test
         [TestInitialize]
         public void Initialize()
         {
-            CUT = new EntryParser();
             filePath = "C:\\Users\\alexander.burke\\Desktop\\CodeKata\\OCR";
+            CUT = new EntryParser(filePath);
+            
         }
 
         [TestMethod]
@@ -62,19 +63,45 @@ namespace KataOCR.Test
             Assert.AreEqual(whatShouldBeInTheFile[6], whatIsActuallyInTheFile[6]);
             Assert.AreEqual(whatShouldBeInTheFile[7], whatIsActuallyInTheFile[7]);
         }
-        /*
+
         [TestMethod]
         public void SplitLinesIntoAccountNumbersListTest()
         {
             List<string> lines = CUT.GatherLinesIntoList(filePath);
             List<AccountNumber> actualResults = CUT.SplitLinesIntoAccountNumbersList(lines);
 
-            List<AccountNumber> expectedResults = new List<AccountNumber>();
+            List<string> expectedResults = new List<string>();
 
-            //expectedResults.Add();
+            expectedResults.Add("123456789");
+            expectedResults.Add("000000000");
+
+            Assert.AreEqual(expectedResults[0], actualResults[0].ID);
+            Assert.AreEqual(expectedResults[1], actualResults[1].ID);
 
         }
-        */
+
+        [TestMethod]
+        public void PrintResultsToFileTest()
+        {
+            string inputFilePath = "C:\\Users\\alexander.burke\\Desktop\\CodeKata\\UseCase3";
+            string outputFilePath = "C:\\Users\\alexander.burke\\Desktop\\CodeKata\\UseCase3Results";
+            CUT = new EntryParser(inputFilePath);
+            CUT.PrintResultsToFile(outputFilePath);
+
+
+            string actualResults;
+            StreamReader outputFileContents = new StreamReader(outputFilePath);
+            actualResults = outputFileContents.ReadToEnd();
+            
+            outputFileContents.Close();
+
+            string expectedResults = "000000051    \r\n" +
+                                     "49006771? ILL\r\n" +
+                                     "1234?678? ILL\r\n";
+
+
+            Assert.AreEqual(expectedResults, actualResults);
+        }
     }
     
 }

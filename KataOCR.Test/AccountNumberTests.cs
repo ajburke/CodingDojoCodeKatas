@@ -243,5 +243,74 @@ namespace KataOCR.Test
             Assert.AreEqual(expectedResults[8].ParsedValue, actualResults[8].ParsedValue);
 
         }
+
+        [TestMethod]
+        public void UpdateIDTest()
+        {
+            string actualResults = CUT.ID;
+            string expectedResults = "123456789";
+
+            Assert.AreEqual(expectedResults, actualResults);
+        }
+
+        [TestMethod]
+        public void ValidIsValidAccountTest()
+        {
+            bool actualResults = CUT.IsValidAccount();
+            bool expectedResults = true;
+
+            Assert.AreEqual(expectedResults, actualResults);
+        }
+
+        [TestMethod]
+        public void InvalidIsValidAccountTest()
+        {
+            string line1 = " _  _     _  _        _  _ \r\n";
+            string line2 = "|_ |_ |_| _|  |  ||_||_||_ \r\n";
+            string line3 = "|_||_|  | _|  |  |  | _| _|\r\n";
+            string line4 = "                           \r\n";
+
+            testLines[0] = line1;
+            testLines[1] = line2;
+            testLines[2] = line3;
+            testLines[3] = line4;
+
+            CUT = new AccountNumber(testLines);
+
+            bool actualResults = CUT.IsValidAccount();
+            bool expectedResults = false;
+
+            Assert.AreEqual(expectedResults, actualResults);
+        }
+
+        [TestMethod]
+        public void ToStringTest()
+        {
+            string actualResult = CUT.ToString();
+            string expectedResult = "123456789";
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void IllegibleNumbersToStringTest()
+        {
+            string line1 = " _  _     _  _        _  _ \r\n";
+            string line2 = "|_ |_ |_| _|  |  ||_||_||_ \r\n";
+            string line3 = "|_ |_|  ||_|  |  |  | _| _|\r\n";
+            string line4 = "                           \r\n";
+
+            testLines[0] = line1;
+            testLines[1] = line2;
+            testLines[2] = line3;
+            testLines[3] = line4;
+
+            CUT = new AccountNumber(testLines);
+
+            string actualResult = CUT.ToString();
+            string expectedResult = "?64?71495";
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }

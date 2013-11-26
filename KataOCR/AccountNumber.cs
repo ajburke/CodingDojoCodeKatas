@@ -13,13 +13,18 @@ namespace KataOCR
 
         public AccountNumber(List<string> Lines)
         {
+            List<string> sanitizedInput = ValidateAndRepairConstructorArraySize(Lines);
+            ParseLinesIntoEntryNumbers(sanitizedInput);
+            UpdateID();
+        }
 
-
-
-            //Send 3x3 chunks for parsing
-
-            //numbers[0] = new EntryNumber();
-
+        private string id;
+        public string ID
+        {
+            get
+            {
+                return id;
+            }
         }
 
         private EntryNumber[] numbers = new EntryNumber[9];
@@ -32,6 +37,7 @@ namespace KataOCR
             set
             {
                 numbers = value;
+                UpdateID();
             }
         }
 
@@ -92,13 +98,13 @@ namespace KataOCR
         {
             string[,] currentEntry = new string[3,3];
             int numberPosition = 0;
-            for (int n = 0; n < numbers.Length; n++)
+            for (    int n = 0; n < numbers.Length; n++)
             {
                 for (int x = 0; x < 3; x++)
                 {
                     for (int y = numberPosition; y < numberPosition+3; y++)
                     {
-                        currentEntry[x, y] = lines[x].Substring(y, 1);
+                        currentEntry[x, y % 3] = lines[x].Substring(y, 1);
                     }
                 }
                 numberPosition += 3;
@@ -107,20 +113,45 @@ namespace KataOCR
             }
         }
 
+        public void UpdateID()
+        {
+            StringBuilder SB = new StringBuilder();
 
-        /*
+            for (int n = 0; n < numbers.Length; n++)
+            {
+                SB.Append(numbers[n].ParsedValue.ToString());
+            }
+
+            id = SB.ToString();
+            
+        }
+
+        public bool IsValidAccount()
+        {
+            int checksum;
+            int total = 0;
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                total += numbers[i].ParsedValue * (numbers.Length - i);
+            }
+            checksum = total % 11;
+            return checksum == 0 ? true : false;
+        }
+
         public override string ToString()
         {
 
             StringBuilder SB = new StringBuilder();
 
-            //Loop over numbers
-
-            //SB.Append(numbers[0].ParsedValue == -1 ? "?" : Convert.ToString(numbers[0].ParsedValue));
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                SB.Append((numbers[i].ParsedValue == -1) ? "?" : Convert.ToString(numbers[i].ParsedValue));
+            }
 
             return SB.ToString();
         }
-        */
+
     }
 
 }
