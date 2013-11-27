@@ -8,7 +8,7 @@ namespace KataOCR
 
     public class AccountNumber
     {
-        public const int lineLength = 29;
+        public const int lineLength = 27;
         public const int numberOfLines = 4;
 
         public AccountNumber(List<string> Lines)
@@ -67,7 +67,7 @@ namespace KataOCR
                 else if (lines[i].Length > lineLength)
                 {
                     StringBuilder SB = new StringBuilder();
-                    SB.Append(lines[i].Substring(0, lineLength - 2));
+                    SB.Append(lines[i].Substring(0, lineLength));
                     SB.Append("\r\n");
                     lines[i] = SB.ToString();
                 }
@@ -113,7 +113,7 @@ namespace KataOCR
             }
         }
 
-        public void UpdateID()
+        private void UpdateID()
         {
             StringBuilder SB = new StringBuilder();
 

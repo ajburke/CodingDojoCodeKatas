@@ -10,59 +10,32 @@ namespace KataOCR
     
     public class EntryParser 
     {
-       
+
+        public List<AccountNumber> AccountList { get; private set; }
+
         public EntryParser(string filePath)
         {
-            List<string> lineList = GatherLinesIntoList(filePath);
-            accountList = SplitLinesIntoAccountNumbersList(lineList);
-        }
-
-        private List<AccountNumber> accountList;
-        public List<AccountNumber> AccountList
-        {
-            get
-            {
-                return accountList;
-            }
-        }
-
-        public string OpenAndReadAndCloseFile(string fileName)
-        {
-            StreamReader file = new StreamReader(fileName);
-            string fileContents = file.ReadToEnd();
-            
-            file.Close();
-
-            return fileContents; 
-        }
-
-
-        public List<string> GatherLinesIntoList(string fileName)
-        {
-            string fileRawContents = this.OpenAndReadAndCloseFile(fileName);
-            List<string> lines = new List<string>();
-
-            for (int i = 0; i < fileRawContents.Length; i += 29)
-            {
-                string substring = fileRawContents.Substring(i, 29);
-                lines.Add(substring);
-            }
-
-            return lines;
+            List<string> lineList = File.ReadAllLines(filePath).ToList();
+            AccountList = SplitLinesIntoAccountNumbersList(lineList);
         }
 
         public List<AccountNumber> SplitLinesIntoAccountNumbersList(List<string> lines)
         {   
             List<AccountNumber> accounts = new List<AccountNumber>();
-            string[] currentEntry = new string[4];
+            List<string> currentEntry = new List<string>();
 
             for (int i = 0; i < lines.Count; i +=4)
             {
+
+                currentEntry.Clear();
+
                 for (int x = 0; x < 4; x++)
                 {
-                    currentEntry[x] = lines[i + x];
+                    currentEntry.Add(lines[i + x]);
                 }
-                accounts.Add(new AccountNumber(currentEntry.ToList()));
+
+                accounts.Add(new AccountNumber(currentEntry));
+
             }
 
             return accounts;
@@ -72,7 +45,7 @@ namespace KataOCR
         {
             StringBuilder SB = new StringBuilder();
 
-            foreach (AccountNumber account in accountList)
+            foreach (AccountNumber account in AccountList)
             {
                 SB.Append(account.ToString());
                 if (account.ID.Contains("-1"))

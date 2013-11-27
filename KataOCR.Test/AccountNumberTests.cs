@@ -20,10 +20,10 @@ namespace KataOCR.Test
         [TestInitialize]
         public void Initialize()
         {
-            string line1 = "    _  _     _  _  _  _  _ \r\n";
-            string line2 = "  | _| _||_||_ |_   ||_||_|\r\n";
-            string line3 = "  ||_  _|  | _||_|  ||_| _|\r\n";
-            string line4 = "                           \r\n";
+            string line1 = "    _  _     _  _  _  _  _ ";
+            string line2 = "  | _| _||_||_ |_   ||_||_|";
+            string line3 = "  ||_  _|  | _||_|  ||_| _|";
+            string line4 = "                           ";
 
             testLines.Add(line1);
             testLines.Add(line2);
@@ -111,10 +111,10 @@ namespace KataOCR.Test
         [TestMethod]
         public void ValidateAndRepairConstructorArraySizeTestsTooShort()
         {
-            string line1 = "    _  _     _  _  _  _  _\r\n";
-            string line2 = "  | _| _||_||_ |_   ||_||_\r\n";
-            string line3 = "  ||_  _|  | _||_|  ||_| _\r\n";
-            string line4 = "                          \r\n";
+            string line1 = "    _  _     _  _  _  _  _";
+            string line2 = "  | _| _||_||_ |_   ||_||_";
+            string line3 = "  ||_  _|  | _||_|  ||_| _";
+            string line4 = "                          ";
 
             List<string> testLinesTooShort = new List<string>();
             testLinesTooShort.Add(line1);
@@ -122,10 +122,10 @@ namespace KataOCR.Test
             testLinesTooShort.Add(line3);
             testLinesTooShort.Add(line4);
 
-            line1 = "     _  _     _  _  _  _  _\r\n";
-            line2 = "   | _| _||_||_ |_   ||_||_\r\n";
-            line3 = "   ||_  _|  | _||_|  ||_| _\r\n";
-            line4 = "                           \r\n";
+            line1 = "     _  _     _  _  _  _  _";
+            line2 = "   | _| _||_||_ |_   ||_||_";
+            line3 = "   ||_  _|  | _||_|  ||_| _";
+            line4 = "                           ";
 
             List<string> testLinesFixed = new List<string>();
             testLinesFixed.Add(line1);
@@ -147,10 +147,10 @@ namespace KataOCR.Test
         [TestMethod]
         public void ValidateAndRepairConstructorArraySizeTestsTooLong()
         {
-            string line1 = "    _  _     _  _  _  _  _   \r\n";
-            string line2 = "  | _| _||_||_ |_   ||_||_|  \r\n";
-            string line3 = "  ||_  _|  | _||_|  ||_| _|  \r\n";
-            string line4 = "                             \r\n";
+            string line1 = "    _  _     _  _  _  _  _   ";
+            string line2 = "  | _| _||_||_ |_   ||_||_|  ";
+            string line3 = "  ||_  _|  | _||_|  ||_| _|  ";
+            string line4 = "                             ";
 
             List<string> testLinesTooShort = new List<string>();
             testLinesTooShort.Add(line1);
@@ -183,9 +183,9 @@ namespace KataOCR.Test
         [TestMethod]
         public void ValidateAndRepairConstructorArraySizeTestsTooFewLines()
         {
-            string line1 = "    _  _     _  _  _  _  _   \r\n";
-            string line2 = "  | _| _||_||_ |_   ||_||_|  \r\n";
-            string line3 = "  ||_  _|  | _||_|  ||_| _|  \r\n";
+            string line1 = "    _  _     _  _  _  _  _   ";
+            string line2 = "  | _| _||_||_ |_   ||_||_|  ";
+            string line3 = "  ||_  _|  | _||_|  ||_| _|  ";
 
             List<string> testLinesTooShort = new List<string>();
             testLinesTooShort.Add(line1);
@@ -265,10 +265,10 @@ namespace KataOCR.Test
         [TestMethod]
         public void InvalidIsValidAccountTest()
         {
-            string line1 = " _  _     _  _        _  _ \r\n";
-            string line2 = "|_ |_ |_| _|  |  ||_||_||_ \r\n";
-            string line3 = "|_||_|  | _|  |  |  | _| _|\r\n";
-            string line4 = "                           \r\n";
+            string line1 = " _  _     _  _        _  _ ";
+            string line2 = "|_ |_ |_| _|  |  ||_||_||_ ";
+            string line3 = "|_||_|  | _|  |  |  | _| _|";
+            string line4 = "                           ";
 
             testLines[0] = line1;
             testLines[1] = line2;
@@ -295,10 +295,10 @@ namespace KataOCR.Test
         [TestMethod]
         public void IllegibleNumbersToStringTest()
         {
-            string line1 = " _  _     _  _        _  _ \r\n";
-            string line2 = "|_ |_ |_| _|  |  ||_||_||_ \r\n";
-            string line3 = "|_ |_|  ||_|  |  |  | _| _|\r\n";
-            string line4 = "                           \r\n";
+            string line1 = " _  _     _  _        _  _ ";
+            string line2 = "|_ |_ |_| _|  |  ||_||_||_ ";
+            string line3 = "|_ |_|  ||_|  |  |  | _| _|";
+            string line4 = "                           ";
 
             testLines[0] = line1;
             testLines[1] = line2;
