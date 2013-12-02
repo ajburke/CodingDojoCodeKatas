@@ -108,7 +108,6 @@ namespace KataOCR.Test
             Assert.AreEqual(expectedResults[2], actualResults[2]);
             Assert.AreEqual(expectedResults[3], actualResults[3]);
         }
-
         [TestMethod]
         public void ValidateAndRepairConstructorArraySizeTestsTooShort()
         {
@@ -145,7 +144,6 @@ namespace KataOCR.Test
             Assert.AreEqual(expectedResults[2], actualResults[2]);
             Assert.AreEqual(expectedResults[3], actualResults[3]);
         }
-
         [TestMethod]
         public void ValidateAndRepairConstructorArraySizeTestsTooLong()
         {
@@ -182,7 +180,6 @@ namespace KataOCR.Test
             Assert.AreEqual(expectedResults[2], actualResults[2]);
             Assert.AreEqual(expectedResults[3], actualResults[3]);
         }
-
         [TestMethod]
         public void ValidateAndRepairConstructorArraySizeTestsTooFewLines()
         {
@@ -265,7 +262,6 @@ namespace KataOCR.Test
 
             Assert.AreEqual(expectedResults, actualResults);
         }
-
         [TestMethod]
         public void InvalidIsValidAccountTest()
         {
@@ -295,7 +291,6 @@ namespace KataOCR.Test
 
             Assert.AreEqual(expectedResult, actualResult);
         }
-
         [TestMethod]
         public void IllegibleNumbersToStringTest()
         {
@@ -316,5 +311,31 @@ namespace KataOCR.Test
 
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        //[TestMethod]
+        //public void UnambiguousFindAlternateValuesTest()
+        //{
+        //    string string1 = " _     _  _  _  _  _  _    ";
+        //    string string2 = "| || || || || || || ||_   |";
+        //    string string3 = "|_||_||_||_||_||_||_| _|  |";
+        //    string string4 = "                           ";
+
+        //    testLines.Clear();
+        //    testLines.Add(string1);
+        //    testLines.Add(string2);
+        //    testLines.Add(string3);
+        //    testLines.Add(string4);
+        //    CUT = new AccountNumber(testLines);
+
+        //    List<int[]> actualResults = CUT.FindAlternateValues();
+        //    List<int[]> expectedResults;
+
+        //    int[]expectedResultsArray = {0,0,0,0,0,0,0,0,5};
+
+        //    expectedResults.Add(expectedResultsArray);
+
+        //    Assert.AreEqual(expectedResults, actualResults);
+            
+       // }
     }
 }

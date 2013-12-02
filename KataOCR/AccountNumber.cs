@@ -165,6 +165,10 @@ namespace KataOCR
             return SB.ToString();
         }
 
+        //public int[] FindAlternateValues()
+        //{
+
+        //}
     }
 
 }

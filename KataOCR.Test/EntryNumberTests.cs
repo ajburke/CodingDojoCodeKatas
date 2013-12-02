@@ -44,7 +44,6 @@ namespace KataOCR.Test
 
             Assert.AreEqual(expectedValue, actualValue);
         }
-
         [TestMethod]
         public void ValidateRawValueTestTooSmallArray()
         {
@@ -58,7 +57,6 @@ namespace KataOCR.Test
 
             Assert.AreEqual(expectedValue, actualValue);
         }
-
         [TestMethod]
         public void ValidateRawValueTestTooLargeArray()
         {
@@ -74,6 +72,7 @@ namespace KataOCR.Test
 
             Assert.AreEqual(expectedValue, actualValue);
         }
+
         [TestMethod]
         public void ParseRawValueTestOne()
         {
@@ -253,6 +252,20 @@ namespace KataOCR.Test
             Assert.AreEqual(expectedValue, actualValue);
         }
 
+        [TestMethod]
+        public void PossibleAlternateValuesTest()
+        {
+            List<int> actualResults = CUT.PossibleAlternateValues();
+            List<int> expectedResults;
+
+            expectedResults.Add(0);
+            expectedResults.Add(6);
+            expectedResults.Add(9);
+
+            Assert.AreEqual(expectedResults[0], actualResults[0]);
+            Assert.AreEqual(expectedResults[1], actualResults[1]);
+            Assert.AreEqual(expectedResults[2], actualResults[2]);
+        }
 
     }
 }
