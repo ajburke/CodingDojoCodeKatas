@@ -10,11 +10,13 @@ namespace KataOCR
     {
         public const int lineLength = 27;
         public const int numberOfLines = 4;
+        public static const string twentySevenSpaces = "                           ";
 
         public AccountNumber(List<string> Lines)
         {
-            List<string> sanitizedInput = ValidateAndRepairConstructorArraySize(Lines);
-            ParseLinesIntoEntryNumbers(sanitizedInput);
+            //List<string> sanitizedInput = 
+            ValidateAndRepairConstructorArraySize(Lines);
+            ParseLinesIntoEntryNumbers(Lines);
             UpdateID();
         }
 
@@ -42,29 +44,25 @@ namespace KataOCR
         }
 
 
-        public List<string> ValidateAndRepairConstructorArraySize(List<string> lines)
+        public void ValidateAndRepairConstructorArraySize(List<string> lines)
         {
             if (lines.Count == numberOfLines)
             {
-                lines = FixLineLength(lines);
-                return lines;
-                 
+                FixLineLength(lines);  
             }
             else
             {
-                lines = FixNumberOfLines(lines);
-                return ValidateAndRepairConstructorArraySize(lines);
+                FixNumberOfLines(lines);
+                FixLineLength(lines);
             }
             
         }
 
-        private List<string> FixLineLength(List<string> lines)
+        private void FixLineLength(List<string> lines)
         {
             for (int i = 0; i < numberOfLines; i++)
             {
-                if (lines[i].Length == lineLength)
-                { }
-                else if (lines[i].Length > lineLength)
+                if (lines[i].Length > lineLength)
                 {
                     StringBuilder SB = new StringBuilder();
                     SB.Append(lines[i].Substring(0, lineLength));
@@ -82,16 +80,15 @@ namespace KataOCR
                     lines[i] = SB.ToString();
                 }
             }
-            return lines;
         }
 
-        private List<string> FixNumberOfLines(List<string> lines)
+        private void FixNumberOfLines(List<string> lines)
         {
             for (int i = lines.Count; i < numberOfLines; i++)
             {
+                //adds an empty line of 27 spaces
                 lines.Add("                           \r\n");
             }
-            return lines;
         }
 
         public void ParseLinesIntoEntryNumbers(List<string> lines)

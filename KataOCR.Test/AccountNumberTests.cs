@@ -99,7 +99,9 @@ namespace KataOCR.Test
         [TestMethod]
         public void ValidateAndRepairConstructorArraySizeTestsRightLength()
         {
-            List<string> actualResults = CUT.ValidateAndRepairConstructorArraySize(testLines);
+            //List<string> 
+            CUT.ValidateAndRepairConstructorArraySize(testLines);
+            List<string>  actualResults = testLines;
             List<string> expectedResults = testLines;
 
             Assert.AreEqual(expectedResults[0], actualResults[0]);
@@ -134,8 +136,9 @@ namespace KataOCR.Test
             testLinesFixed.Add(line4);
 
             CUT = new AccountNumber(testLinesTooShort);
+            CUT.ValidateAndRepairConstructorArraySize(testLinesTooShort);
 
-            List<string> actualResults = CUT.ValidateAndRepairConstructorArraySize(testLinesTooShort);
+            List<string> actualResults = testLinesTooShort;
             List<string> expectedResults = testLinesFixed;
 
             Assert.AreEqual(expectedResults[0], actualResults[0]);
@@ -171,7 +174,8 @@ namespace KataOCR.Test
 
             CUT = new AccountNumber(testLinesTooShort);
 
-            List<string> actualResults = CUT.ValidateAndRepairConstructorArraySize(testLinesTooShort);
+            CUT.ValidateAndRepairConstructorArraySize(testLinesTooShort);
+            List<string> actualResults = testLinesTooShort;
             List<string> expectedResults = testLinesFixed;
 
             Assert.AreEqual(expectedResults[0], actualResults[0]);
@@ -205,7 +209,8 @@ namespace KataOCR.Test
 
             CUT = new AccountNumber(testLinesTooShort);
 
-            List<string> actualResults = CUT.ValidateAndRepairConstructorArraySize(testLinesTooShort);
+            CUT.ValidateAndRepairConstructorArraySize(testLinesTooShort);
+            List<string> actualResults = testLinesTooShort;
             List<string> expectedResults = testLinesFixed;
 
             Assert.AreEqual(expectedResults[0], actualResults[0]);
