@@ -10,7 +10,9 @@ namespace KataOCR
     {
         public const int lineLength = 27;
         public const int numberOfLines = 4;
+<<<<<<< HEAD
         public static const string twentySevenSpaces = "                           ";
+=======
         
         private static readonly string DefaultLine;
         
@@ -26,6 +28,7 @@ namespace KataOCR
             
             
         }
+>>>>>>> a19d0312b7c02a687977c4c6056d848fd53165a7
 
         public AccountNumber(List<string> Lines)
         {
