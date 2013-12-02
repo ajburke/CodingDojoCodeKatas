@@ -99,7 +99,6 @@ namespace KataOCR.Test
         [TestMethod]
         public void ValidateAndRepairConstructorArraySizeTestsRightLength()
         {
-            //List<string> 
             CUT.ValidateAndRepairConstructorArraySize(testLines);
             List<string>  actualResults = testLines;
             List<string> expectedResults = testLines;

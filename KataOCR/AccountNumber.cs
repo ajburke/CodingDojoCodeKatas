@@ -10,7 +10,6 @@ namespace KataOCR
     {
         public const int lineLength = 27;
         public const int numberOfLines = 4;
-        public static const string twentySevenSpaces = "                           ";
         
         private static readonly string DefaultLine;
         
@@ -29,7 +28,6 @@ namespace KataOCR
 
         public AccountNumber(List<string> Lines)
         {
-            //List<string> sanitizedInput = 
             ValidateAndRepairConstructorArraySize(Lines);
             ParseLinesIntoEntryNumbers(Lines);
             UpdateID();
@@ -101,8 +99,7 @@ namespace KataOCR
         {
             for (int i = lines.Count; i < numberOfLines; i++)
             {
-                //adds an empty line of 27 spaces
-                lines.Add("                           \r\n");
+                lines.Add(DefaultLine + "\r\n");
             }
         }
 
@@ -110,18 +107,22 @@ namespace KataOCR
         {
             string[,] currentEntry = new string[3,3];
             int numberPosition = 0;
-            for (    int n = 0; n < numbers.Length; n++)
+            for (int n = 0; n < numbers.Length; n++)
             {
-                for (int x = 0; x < 3; x++)
-                {
-                    for (int y = numberPosition; y < numberPosition+3; y++)
-                    {
-                        currentEntry[x, y % 3] = lines[x].Substring(y, 1);
-                    }
-                }
-                numberPosition += 3;
+                setCurrentEntryToEntryAtPosition(numberPosition, lines, currentEntry);
                 numbers[n] = new EntryNumber(currentEntry);
+                numberPosition += 3;
+            }
+        }
 
+        private void setCurrentEntryToEntryAtPosition(int position, List<string> lines, string[,] currentEntry)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                for (int y = position; y < position + 3; y++)
+                {
+                    currentEntry[x, y % 3] = lines[x].Substring(y, 1);
+                }
             }
         }
 

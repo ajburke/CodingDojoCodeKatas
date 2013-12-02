@@ -232,12 +232,25 @@ namespace KataOCR.Test
                 {" ","_"," "},
                 {"|"," "," "},
                 {"|","_","|"} 
-            };
+             };
             int actualValue = CUT.ParseRawValue(testValueInvalid);
             int expectedValue = -1;
 
             Assert.AreEqual(expectedValue, actualValue);
 
+        }
+        [TestMethod]
+        public void InvalidSizeParseRawValueTest()
+        {
+            string[,] testValueInvalid = new string[2,3]
+             { 
+                {" ","_"," "},
+                {"|"," "," "} 
+             };
+            int actualValue = CUT.ParseRawValue(testValueInvalid);
+            int expectedValue = -1;
+
+            Assert.AreEqual(expectedValue, actualValue);
         }
 
 

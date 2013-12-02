@@ -9,7 +9,7 @@ namespace KataOCR
     public class EntryNumber
     {
 
-        #region Format Constants
+        #region Formats
         public static string[][,] numberFormats = new string[10][,];
         public static string[,] zeroFormat = new string[3, 3] 
         { 
@@ -89,13 +89,7 @@ namespace KataOCR
             set
             {
                 rawValue = value;
-                if (ValidateRawValue(value))
-                {
-                    parsedValue = ParseRawValue(value);
-                }
-                else
-                    parsedValue = -1;
-
+                parsedValue = ParseRawValue(value);
             }
 
         }
@@ -145,14 +139,16 @@ namespace KataOCR
         public int ParseRawValue(string[,] RawValue)
         {
             bool areEqual;
-           
-            for (int format = 0; format < numberFormats.GetLength(0); format++)
+            if (ValidateRawValue(RawValue))
             {
-               areEqual = isUnParsedValueEqualToAFormat(RawValue, format);
-               if (areEqual)
-                   return format;
+                for (int format = 0; format < numberFormats.GetLength(0); format++)
+                {
+                    areEqual = isUnParsedValueEqualToAFormat(RawValue, format);
+                    if (areEqual)
+                        return format;
+                }
             }
-            return -1;
+           return -1;
         }
         private bool isUnParsedValueEqualToAFormat(string[,] RawValue, int format)
         {
@@ -161,9 +157,7 @@ namespace KataOCR
                 {
                     for (int y = 0; y < 3; y++)
                     {
-                        if (RawValue[x, y] == numberFormats[format][x, y])
-                        { }
-                        else
+                        if (RawValue[x, y] != numberFormats[format][x, y])
                         {
                             areEqual = false;
                         }
