@@ -10,6 +10,21 @@ namespace KataOCR
     {
         public const int lineLength = 27;
         public const int numberOfLines = 4;
+        
+        private static readonly string DefaultLine;
+        
+        static AccountNumber()
+        {
+            
+            StringBuilder Builder = new StringBuilder();
+            
+            for (int i = 0; i < lineLength; i++)
+                Builder.Append(" ");
+            
+            DefaultLine = Builder.ToString();
+            
+            
+        }
 
         public AccountNumber(List<string> Lines)
         {
